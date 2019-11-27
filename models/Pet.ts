@@ -1,4 +1,4 @@
-class Pet {
+export class Pet {
   private _name: string;
   private _size: number;
   private _age: number;

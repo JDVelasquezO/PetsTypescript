@@ -1,4 +1,3 @@
-"use strict";
 var Pet = /** @class */ (function () {
     function Pet(name, size, age, weigth) {
         this._name = name;
@@ -36,3 +35,4 @@ var Pet = /** @class */ (function () {
     });
     return Pet;
 }());
+export { Pet };

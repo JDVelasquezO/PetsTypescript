@@ -12,12 +12,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { Pet } from "./Pet.js";
-var Dog = /** @class */ (function (_super) {
-    __extends(Dog, _super);
-    function Dog(name, size, age, weigth, race) {
+var Fish = /** @class */ (function (_super) {
+    __extends(Fish, _super);
+    function Fish(name, size, age, weigth, type) {
         var _this = _super.call(this, name, size, age, weigth) || this;
-        _this._race = race;
+        _this._type = type;
         return _this;
     }
-    return Dog;
+    return Fish;
 }(Pet));

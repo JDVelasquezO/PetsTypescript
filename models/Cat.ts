@@ -1,16 +1,16 @@
 import { Pet } from "./Pet.js";
 
-class Dog extends Pet {
-  private _race: string;
+class Cat extends Pet {
+  private _eyesColor: string;
 
   constructor(
     name: string,
     size: number,
     age: number,
     weigth: number,
-    race: string
+    eyesColor: string
   ) {
     super(name, size, age, weigth);
-    this._race = race;
+    this._eyesColor = eyesColor;
   }
 }
