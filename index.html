@@ -5,104 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Registro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
-    <main id="app">
-      <h1>Registro de mascotas</h1>
-      <form
-        @submit.prevent="register(name, size, age, weigth, selected)"
-        id="formRegister"
-      >
-        <input
-          autocomplete="off"
-          type="text"
-          placeholder="Nombre"
-          id="name"
-          ref="name"
-          v-model="name"
-        /><br />
-        <input
-          autocomplete="off"
-          type="number"
-          placeholder="Tamaño"
-          id="size"
-          v-model="size"
-        /><br />
-        <input
-          autocomplete="off"
-          type="number"
-          placeholder="Edad"
-          id="age"
-          v-model="age"
-        /><br />
-        <input
-          autocomplete="off"
-          type="number"
-          placeholder="Peso"
-          id="weigth"
-          v-model="weigth"
-        /><br />
-        <select v-model="selected" id="select">
-          <option disabled value="">Seleccione una opción</option>
-          <option v-for="pet in petsNames">{{ pet }}</option
-          ><br
-        /></select>
-        <div>
-          <div v-if="selected === 'Perro'">
-            <input v-model="race" type="text" placeholder="Raza" /><br />
+    <main id="app" class="container">
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <h1 class="title">Registro de mascotas</h1>
+          <form
+            @submit.prevent="register(name, size, age, weigth, selected)"
+            id="formRegister"
+          >
+          <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control">
+                <input
+                class="input"
+                autocomplete="off"
+                type="text"
+                placeholder="Nombre"
+                id="name"
+                ref="name"
+                v-model="name"
+              />
+              </div>
           </div>
-          <div v-else-if="selected === 'Gato'">
-            <input
-              v-model="eyesColor"
-              type="text"
-              placeholder="Color de ojos"
-            /><br />
+          <div class="field">
+              <label class="label">Tamaño</label>
+              <div class="control">
+                <input
+                class="input"
+                autocomplete="off"
+                type="number"
+                placeholder="Tamaño"
+                id="size"
+                v-model="size"
+              />
+              </div>
           </div>
-          <div v-else-if="selected === 'Loro'">
-            <input
-              v-model="featherColor"
-              type="text"
-              placeholder="Color de plumas"
-            /><br />
+          <div class="field">
+              <label class="label">Edad</label>
+              <div class="control">
+                <input
+                class="input"
+                autocomplete="off"
+                type="number"
+                placeholder="Edad"
+                id="age"
+                v-model="age"
+              />
+              </div>
           </div>
-          <div v-else-if='selected === "Pez"'>
-            <input v-model="type" type="text" placeholder="Tipo" /><br />
+          <div class="field">
+              <label class="label">Peso</label>
+              <div class="control">
+                <input
+                class="input"
+                autocomplete="off"
+                type="number"
+                placeholder="Peso"
+                id="weigth"
+                v-model="weigth"
+              />
+              </div>
           </div>
-          <div v-else>
-            <span></span>
+          <div class="field">
+              <label class="label">Tipo de Mascota</label>
+              <div class="control">
+                <div class="select">
+                    <select v-model="selected" id="select">
+                      <option disabled value="">Seleccione una opción</option>
+                      <option v-for="pet in petsNames">{{ pet }}</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div v-if="selected === 'Perro'" class="field">
+                  <label class="label">Perro</label>
+                  <div class="control">
+                      <div>
+                          <input class="input" v-model="race" type="text" placeholder="Raza" /><br />
+                      </div>
+                  </div>
+              </div>
+              <div v-else-if="selected === 'Gato'" class="field">
+                  <label class="label">Gato</label>
+                  <div class="control">
+                      <div>
+                          <input class='input' v-model="eyesColor" type="text" placeholder="Color de ojos" />
+                      </div>
+                  </div>
+              </div>
+              <div v-else-if="selected === 'Loro'" class="field">
+                  <label class="label">Loro</label>
+                  <div class="control">
+                      <div>
+                          <input class="input" v-model="featherColor" type="text" placeholder="Color de plumas" />
+                      </div>
+                  </div>
+              </div>
+              <div v-else-if="selected === 'Pez'" class="field">
+                  <label class="label">Loro</label>
+                  <div class="control">
+                      <div>
+                          <input class="input" v-model="type" type="text" placeholder="Tipo" />
+                      </div>
+                  </div>
+              </div>
+              <div v-else>
+                <span></span>
+              </div>
+            </div>
+            <br>
+            <div class="control">
+              <button class="button is-link">Registrar</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="column">
+          <div class="table-container">
+            <h1 class="title">Tabla de Mascotas</h1>
+            <table class="table is-hoverable is-fullwidth" v-if='pets.length !== 0' border="1">
+                <thead>
+                    <th>
+                        <td>Nombre</td>
+                        <td>Categoría</td>
+                        <td>Edad</td>
+                        <td>Tamaño</td>
+                        <td>Peso</td>
+                        <td>Características</td>
+                    </th>
+                </thead>
+                <tbody>
+                  <tr v-for='(pet, index) in pets'>
+                      <td>{{ index+1 }}</td>
+                      <td>{{ pet.getName }}</td>
+                      <td>{{ pet.getType }}</td>
+                      <td>{{ pet.getAge }} años</td>
+                      <td>{{ pet.getWeigth }} kg</td>
+                      <td>{{ pet.getSize }} cm</td>
+                      <div>
+                        <td v-if='pet.getType === "Perro"'>Raza: {{ pet.getRace }}</td>
+                        <td v-else-if='pet.getType === "Gato"'>Color de ojos: {{ pet.getEyesColor }}</td>
+                        <td v-else-if='pet.getType === "Loro"'>Color de plumas: {{ pet.getFeatherColor }}</td>
+                        <td v-else-if='pet.getType === "Pez"'>Tipo de pez: {{ pet.getTypeFish }}</td>
+                      </div>
+                  </tr>
+                </tbody>
+            </table>
+            <div v-else>
+              <h2 class="subtitle">
+                No hay nada aquí
+              </h2>
+            </div>
           </div>
         </div>
-        <button>Registrar</button>
-      </form>
-      <br /><br /><br />
-      <table v-if='pets.length !== 0' border="1">
-          <thead>
-              <th>
-                  <td>Nombre</td>
-                  <td>Categoría</td>
-                  <td>Edad</td>
-                  <td>Tamaño</td>
-                  <td>Peso</td>
-                  <td>Características</td>
-              </th>
-          </thead>
-          <tbody>
-            <tr v-for='(pet, index) in pets'>
-                <td>{{ index+1 }}</td>
-                <td>{{ pet.getName }}</td>
-                <td>{{ pet.getType }}</td>
-                <td>{{ pet.getAge }} años</td>
-                <td>{{ pet.getWeigth }} kg</td>
-                <td>{{ pet.getSize }} cm</td>
-                <div>
-                  <td v-if='pet.getType === "Perro"'>Raza: {{ pet.getRace }}</td>
-                  <td v-else-if='pet.getType === "Gato"'>Color de ojos: {{ pet.getEyesColor }}</td>
-                  <td v-else-if='pet.getType === "Loro"'>Color de plumas: {{ pet.getFeatherColor }}</td>
-                  <td v-else-if='pet.getType === "Pez"'>Tipo de pez: {{ pet.getTypeFish }}</td>
-                </div>
-            </tr>
-          </tbody>
-      </table>
+      </div>
     </main>
 
     <script src="/vue/vue.js"></script>
