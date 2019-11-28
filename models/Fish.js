@@ -14,11 +14,25 @@ var __extends = (this && this.__extends) || (function () {
 import { Pet } from "./Pet.js";
 var Fish = /** @class */ (function (_super) {
     __extends(Fish, _super);
-    function Fish(name, size, age, weigth, type) {
-        var _this = _super.call(this, name, size, age, weigth) || this;
-        _this._type = type;
+    function Fish(name, size, age, weigth, typeFish) {
+        var _this = _super.call(this, name, size, age, weigth, "Pez") || this;
+        _this._typeFish = typeFish;
         return _this;
     }
+    Object.defineProperty(Fish.prototype, "setTypeFish", {
+        set: function (v) {
+            this._typeFish = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Fish.prototype, "getTypeFish", {
+        get: function () {
+            return this._typeFish;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Fish;
 }(Pet));
 export { Fish };

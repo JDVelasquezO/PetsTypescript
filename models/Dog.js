@@ -15,10 +15,24 @@ import { Pet } from "./Pet.js";
 var Dog = /** @class */ (function (_super) {
     __extends(Dog, _super);
     function Dog(name, size, age, weigth, race) {
-        var _this = _super.call(this, name, size, age, weigth) || this;
+        var _this = _super.call(this, name, size, age, weigth, "Perro") || this;
         _this._race = race;
         return _this;
     }
+    Object.defineProperty(Dog.prototype, "setRace", {
+        set: function (v) {
+            this._race = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Dog.prototype, "getRace", {
+        get: function () {
+            return this._race;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Dog;
 }(Pet));
 export { Dog };

@@ -1,16 +1,24 @@
 import { Pet } from "./Pet.js";
 
 export class Fish extends Pet {
-  private _type: string;
+  private _typeFish: string;
 
   constructor(
     name: string,
     size: number,
     age: number,
     weigth: number,
-    type: string
+    typeFish: string
   ) {
-    super(name, size, age, weigth);
-    this._type = type;
+    super(name, size, age, weigth, "Pez");
+    this._typeFish = typeFish;
+  }
+
+  public set setTypeFish(v: string) {
+    this._typeFish = v;
+  }
+
+  public get getTypeFish(): string {
+    return this._typeFish;
   }
 }

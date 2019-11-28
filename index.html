@@ -74,6 +74,35 @@
         </div>
         <button>Registrar</button>
       </form>
+      <br /><br /><br />
+      <table v-if='pets.length !== 0' border="1">
+          <thead>
+              <th>
+                  <td>Nombre</td>
+                  <td>Categoría</td>
+                  <td>Edad</td>
+                  <td>Tamaño</td>
+                  <td>Peso</td>
+                  <td>Características</td>
+              </th>
+          </thead>
+          <tbody>
+            <tr v-for='(pet, index) in pets'>
+                <td>{{ index+1 }}</td>
+                <td>{{ pet.getName }}</td>
+                <td>{{ pet.getType }}</td>
+                <td>{{ pet.getAge }} años</td>
+                <td>{{ pet.getWeigth }} kg</td>
+                <td>{{ pet.getSize }} cm</td>
+                <div>
+                  <td v-if='pet.getType === "Perro"'>Raza: {{ pet.getRace }}</td>
+                  <td v-else-if='pet.getType === "Gato"'>Color de ojos: {{ pet.getEyesColor }}</td>
+                  <td v-else-if='pet.getType === "Loro"'>Color de plumas: {{ pet.getFeatherColor }}</td>
+                  <td v-else-if='pet.getType === "Pez"'>Tipo de pez: {{ pet.getTypeFish }}</td>
+                </div>
+            </tr>
+          </tbody>
+      </table>
     </main>
 
     <script src="/vue/vue.js"></script>

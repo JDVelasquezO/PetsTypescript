@@ -10,7 +10,15 @@ export class Cat extends Pet {
     weigth: number,
     eyesColor: string
   ) {
-    super(name, size, age, weigth);
+    super(name, size, age, weigth, "Gato");
     this._eyesColor = eyesColor;
+  }
+
+  public set setEyesColor(v: string) {
+    this._eyesColor = v;
+  }
+
+  public get getEyesColor(): string {
+    return this._eyesColor;
   }
 }
