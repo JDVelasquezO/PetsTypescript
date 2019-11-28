@@ -1,0 +1,58 @@
+import { Pet } from "./models/Pet.js";
+import { Dog } from "./models/Dog.js";
+import { Cat } from './models/Cat.js';
+import { Parrot } from './models/Parrot.js';
+import { Fish } from './models/Fish.js';
+var vm = new Vue({
+    el: "#app",
+    data: {
+        name: "",
+        size: "",
+        age: "",
+        weigth: "",
+        race: "",
+        eyesColor: "",
+        featherColor: "",
+        type: "",
+        petsNames: ["Perro", "Gato", "Loro", "Pez"],
+        pet: Pet,
+        pets: [],
+        selected: ""
+    },
+    methods: {
+        register: function (name, size, age, weigth, specification) {
+            this.validatePet(specification, name, size, age, weigth);
+            this.pets.push(this.pet);
+            this.reset(this.$refs.name);
+        },
+        validatePet: function (specification, name, size, age, weigth) {
+            switch (specification) {
+                case "Perro":
+                    this.pet = new Dog(name, size, age, weigth, this.race);
+                    break;
+                case 'Gato':
+                    this.pet = new Cat(name, size, age, weigth, this.eyesColor);
+                    break;
+                case 'Loro':
+                    this.pet = new Parrot(name, size, age, weigth, this.featherColor);
+                    break;
+                case 'Pez':
+                    this.pet = new Fish(name, size, age, weigth, this.type);
+                    break;
+                default:
+                    break;
+            }
+        },
+        reset: function (element) {
+            element.focus();
+            this.name = '';
+            this.size = '';
+            this.age = '';
+            this.weigth = '';
+            this.selected = '';
+        }
+    },
+    mounted: function () {
+        this.reset(this.$refs.name);
+    }
+});

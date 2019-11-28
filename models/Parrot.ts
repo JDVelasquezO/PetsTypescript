@@ -1,6 +1,6 @@
 import { Pet } from "./Pet.js";
 
-class Parrot extends Pet {
+export class Parrot extends Pet {
   private _featherColor: string;
 
   constructor(

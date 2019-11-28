@@ -1,6 +1,6 @@
 import { Pet } from "./Pet.js";
 
-class Fish extends Pet {
+export class Fish extends Pet {
   private _type: string;
 
   constructor(

@@ -7,6 +7,76 @@
     <title>Registro</title>
   </head>
   <body>
-    <h1>Registro de mascotas</h1>
+    <main id="app">
+      <h1>Registro de mascotas</h1>
+      <form
+        @submit.prevent="register(name, size, age, weigth, selected)"
+        id="formRegister"
+      >
+        <input
+          autocomplete="off"
+          type="text"
+          placeholder="Nombre"
+          id="name"
+          ref="name"
+          v-model="name"
+        /><br />
+        <input
+          autocomplete="off"
+          type="number"
+          placeholder="Tamaño"
+          id="size"
+          v-model="size"
+        /><br />
+        <input
+          autocomplete="off"
+          type="number"
+          placeholder="Edad"
+          id="age"
+          v-model="age"
+        /><br />
+        <input
+          autocomplete="off"
+          type="number"
+          placeholder="Peso"
+          id="weigth"
+          v-model="weigth"
+        /><br />
+        <select v-model="selected" id="select">
+          <option disabled value="">Seleccione una opción</option>
+          <option v-for="pet in petsNames">{{ pet }}</option
+          ><br
+        /></select>
+        <div>
+          <div v-if="selected === 'Perro'">
+            <input v-model="race" type="text" placeholder="Raza" /><br />
+          </div>
+          <div v-else-if="selected === 'Gato'">
+            <input
+              v-model="eyesColor"
+              type="text"
+              placeholder="Color de ojos"
+            /><br />
+          </div>
+          <div v-else-if="selected === 'Loro'">
+            <input
+              v-model="featherColor"
+              type="text"
+              placeholder="Color de plumas"
+            /><br />
+          </div>
+          <div v-else-if='selected === "Pez"'>
+            <input v-model="type" type="text" placeholder="Tipo" /><br />
+          </div>
+          <div v-else>
+            <span></span>
+          </div>
+        </div>
+        <button>Registrar</button>
+      </form>
+    </main>
+
+    <script src="/vue/vue.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>

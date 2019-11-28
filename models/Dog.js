@@ -21,3 +21,4 @@ var Dog = /** @class */ (function (_super) {
     }
     return Dog;
 }(Pet));
+export { Dog };
